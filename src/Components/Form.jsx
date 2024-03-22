@@ -29,7 +29,7 @@ setFormData({
 
 return (
 <div>
-    <h2>Contact Form</h2>
+    <h2>Formulario de contacto</h2>
     <form onSubmit={handleSubmit}>
     <div>
         <label htmlFor="name">Name:</label>

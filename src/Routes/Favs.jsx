@@ -8,7 +8,7 @@ const Favs = () => {
 
   return (
     <div className={state.theme === 'dark' ? 'dark-theme' : 'light-theme'}>
-      <h1>Dentists Favs</h1>
+      <h1>Dentistas Favoritos</h1>
       <div className="card-grid">
         {favorites.length > 0 ? (
           favorites.map(id => (
