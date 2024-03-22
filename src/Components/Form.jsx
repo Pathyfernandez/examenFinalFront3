@@ -1,26 +1,73 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 
-const Card = ({ name, username, id }) => {
+const Form = () => {
+const [formData, setFormData] = useState({
+name: "",
+email: "",
+message: ""
+});
 
-const addFav = () => {
-// Lógica para agregar la Card en el localStorage
-const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-if (!favorites.includes(id)) {
-    favorites.push(id);
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-}
+const handleChange = (e) => {
+const { name, value } = e.target;
+setFormData(prevState => ({
+    ...prevState,
+    [name]: value
+}));
+};
+
+const handleSubmit = (e) => {
+e.preventDefault();
+// Aquí puedes agregar la lógica para enviar los datos del formulario
+console.log("Formulario enviado:", formData);
+// Aquí puedes agregar la lógica para limpiar el formulario después de enviarlo
+setFormData({
+    name: "",
+    email: "",
+    message: ""
+});
 };
 
 return (
-<div className="card">
-    <h2>Name: {name}</h2>
-    <p>Username: {username}</p>
-    <p>ID: {id}</p>
-    <Link to={`/dentista/${id}`} className="detailLink">Ver Detalle</Link>
-    <button onClick={addFav} className="favButton">Add fav</button>
+<div>
+    <h2>Contact Form</h2>
+    <form onSubmit={handleSubmit}>
+    <div>
+        <label htmlFor="name">Name:</label>
+        <input
+        type="text"
+        id="name"
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+        required
+        />
+    </div>
+    <div>
+        <label htmlFor="email">Email:</label>
+        <input
+        type="email"
+        id="email"
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+        required
+        />
+    </div>
+    <div>
+        <label htmlFor="message">Message:</label>
+        <textarea
+        id="message"
+        name="message"
+        value={formData.message}
+        onChange={handleChange}
+        required
+        />
+    </div>
+    <button type="submit">Submit</button>
+    </form>
 </div>
 );
 };
 
-export default Card;
+export default Form;
+
