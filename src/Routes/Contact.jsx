@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import Form from './Form';
-import { AppContext } from './AppContext';
+import Form from '../Components/Form';
+import { AppContext } from '../Contex/globalContext';
 
 const Contact = () => {
   const { state } = useContext(AppContext);

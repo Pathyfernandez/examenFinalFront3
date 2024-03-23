@@ -6,6 +6,7 @@ import Contact from './Routes/Contact';
 import Detail from './Routes/Detail';
 import Favs from './Routes/Favs';
 
+
 function App() {
   return (
     <Router>

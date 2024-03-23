@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { AppContext } from './AppContext';
+import { AppContext } from '../Contex/globalContext';
 
 const Detail = () => {
   const { state } = useContext(AppContext);

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { AppContext } from '../context/AppContext';
+import { AppContext } from '../Contex/globalContext';
 import Card from "../Components/Card";
 
 const Favs = () => {

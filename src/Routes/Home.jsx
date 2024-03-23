@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { AppContext } from '../context/AppContext';
+import { AppContext } from '../Contex/globalContext';
 import Card from '../Components/Card';
 
 const Home = () => {
-  const { state } = useContext(AppContext);
-  const [dentists, setDentists] = useState([]);
+  const { state } = useContext(glo);
+  const [dentists, setDentists] = useState([AppContext]);
+  
 
   useEffect(() => {
     // Aquí deberías realizar la llamada a la API para obtener los dentistas
