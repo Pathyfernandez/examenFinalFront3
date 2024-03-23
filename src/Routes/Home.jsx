@@ -1,15 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { AppContext } from '../Contex/globalContext';
+import { AppContext } from "../Contex/globalContext";
 import Card from '../Components/Card';
 
 const Home = () => {
-  const { state } = useContext(glo);
-  const [dentists, setDentists] = useState([AppContext]);
-  
+  const { state } = useContext(AppContext);
+  const [dentists, setDentists] = useState([]);
 
   useEffect(() => {
-    // Aquí deberías realizar la llamada a la API para obtener los dentistas
-    // Supongamos que ya tienes una función fetchDentists para hacer esto
+    // Suponiendo que tienes una función fetchDentists para obtener los dentistas desde la API
     const fetchDentists = async () => {
       try {
         const response = await fetch('https://api.example.com/dentists');
@@ -23,6 +21,8 @@ const Home = () => {
         console.error('Error de red:', error);
       }
     };
+    
+
     fetchDentists();
   }, []);
 
@@ -42,5 +42,7 @@ const Home = () => {
     </main>
   );
 };
+
+
 
 export default Home;
