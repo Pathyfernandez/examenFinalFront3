@@ -1,4 +1,4 @@
-// context/global.context.jsx
+// Context/globalContext.jsx
 import React, { createContext, useReducer } from 'react';
 
 // Estado inicial del contexto
