@@ -11,7 +11,7 @@ const Detail = () => {
     // Hacer un fetch a un user en especifico utilizando el ID
     const fetchDentist = async () => {
       try {
-        const response = await fetch(`https://api.example.com/dentists/${id}`);
+        const response = await fetch(`https://jsonplaceholder.typicode.com/users/:id`);
         if (response.ok) {
           const data = await response.json();
           setDentist(data);

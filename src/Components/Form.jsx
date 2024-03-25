@@ -32,7 +32,7 @@ return (
     <h2>Formulario de contacto</h2>
     <form onSubmit={handleSubmit}>
     <div>
-        <label htmlFor="name">Name:</label>
+        <label htmlFor="name">Nombre:</label>
         <input
         type="text"
         id="name"
@@ -54,7 +54,7 @@ return (
         />
     </div>
     <div>
-        <label htmlFor="message">Message:</label>
+        <label htmlFor="message">Mensaje:</label>
         <textarea
         id="message"
         name="message"
