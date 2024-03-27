@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, } from 'react-router-dom';
-import { routes } from '../Utils/Routes';
+import { routes } from './Utils/Routes';
+
 
 
 
@@ -11,10 +12,10 @@ function App() {
           <div>
             
             
-              <Route path="/" exact component={Home} />
-              <Route path="/dentist/:id" component={DentistDetail} />
-              <Route path="/contact" component={Contact} />
-              <Route path="/favs" component={Favorites} />
+              <Route path={routes.home} exact component={Home} />
+              <Route path={routes.detail} component={DentistDetail} />
+              <Route path={routes.contact} component={Contact} />
+              <Route path={routes.favs} component={Favorites} />
             
           
           </div>
