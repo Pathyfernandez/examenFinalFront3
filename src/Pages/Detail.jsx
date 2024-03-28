@@ -1,43 +1,43 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { AppContext } from '../Context/GlobalContext';
+import { DentisState } from '../Context/GlobalContext';
 
 const Detail = () => {
-  const { state } = useContext(AppContext);
-  const [dentist, setDentist] = useState(null);
+  const { state } = useContext(DentisState);
   const { id } = useParams();
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const fetchDentist = async () => {
+    
+    const fetchUser = async () => {
       try {
-        const response = await fetch(`https://jsonplaceholder.typicode.com/users/:id`);
+        const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
         if (response.ok) {
           const data = await response.json();
-          setDentist(data);
+          setUser(data);
         } else {
-          console.error('Error al obtener el dentista:', response.status);
+          throw new Error('Error al obtener los datos del usuario');
         }
       } catch (error) {
-        console.error('Error de red:', error);
+        console.error(error);
       }
     };
-    fetchDentist();
+
+    fetchUser();
   }, [id]);
 
   return (
-    <div className={state.theme === 'dark' ? 'dark-theme' : 'light-theme'}>
-      {dentist ? (
-        <>
-          <h1>Detail Dentist {dentist.id}</h1>
-          <p>Name: {dentist.name}</p>
-          <p>Email: {dentist.email}</p>
-          <p>Phone: {dentist.phone}</p>
-          <p>Website: {dentist.website}</p>
-        </>
-      ) : (
-        <p>Cargando detalles del dentista...</p>
+    <main className={state.theme === 'dark' ? 'dark-theme' : 'light-theme'}>
+      <h1>Detail Dentist id {id}</h1>
+      {user && (
+        <div>
+          <h2>Name: {user.name}</h2>
+          <p>Email: {user.email}</p>
+          <p>Phone: {user.phone}</p>
+          <p>Website: {user.website}</p>
+        </div>
       )}
-    </div>
+    </main>
   );
 };
 

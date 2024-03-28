@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { AppContext } from '../Context/GlobalContext';
+import { DentisState } from '../Context/GlobalContext';
 import Card from "../Components/Card";
 
 const Favs = () => {
-  const { state } = useContext(AppContext);
+  const { state } = useContext(DentisState);
   const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
   return (

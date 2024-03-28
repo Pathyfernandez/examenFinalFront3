@@ -1,43 +1,54 @@
-// Context/globalContext.jsx
-import React, { createContext, useReducer } from 'react';
+import React, { createContext, useContext, useEffect, useReducer } from "react";
+import axios from "axios";
 
-// Estado inicial del contexto
+// Definición del contexto
+const DentisState = createContext();
+
+// Estado inicial
 const initialState = {
-  theme: 'light',
-  dentists: [],
-  favorites: [],
+  cart: [],
+  list: [],
+  theme: "light", // Por defecto, el tema es "light"
 };
 
-// Reducer que define cómo se actualiza el estado en función de las acciones
+// Reducer para gestionar las acciones
 const reducer = (state, action) => {
   switch (action.type) {
+    case 'GET_LIST':
+      return {
+        ...state,
+        list: action.payload,
+      };
     case 'TOGGLE_THEME':
-      // Cambia el tema de la aplicación entre claro y oscuro
-      return { ...state, theme: state.theme === 'light' ? 'dark' : 'light' };
-    case 'SET_DENTISTS':
-      // Establece la lista de dentistas con los datos proporcionados
-      return { ...state, dentists: action.payload };
-    case 'ADD_FAVORITE':
-      // Agrega un dentista a la lista de favoritos
-      return { ...state, favorites: [...state.favorites, action.payload] };
+      return {
+        ...state,
+        theme: state.theme === "light" ? "dark" : "light", // Cambia entre "light" y "dark"
+      };
     default:
       return state;
   }
 };
 
-// Creación del contexto de la aplicación
-export const AppContext = createContext();
-
-// Proveedor de contexto que envuelve toda la aplicación
-export const AppProvider = ({ children }) => {
-  // Utiliza el reducer y el estado inicial para crear el estado global
+// Componente de contexto global
+const GlobalContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // Renderiza los componentes hijos con el contexto proporcionado
+  // Carga de datos iniciales
+  useEffect(() => {
+    axios('https://jsonplaceholder.typicode.com/users')
+      .then(res => {
+        dispatch({ type: 'GET_LIST', payload: res.data });
+      });
+  }, []);
+
   return (
-    <AppContext.Provider value={{ state, dispatch }}>
+    <DentisState.Provider value={{ state, dispatch }}>
       {children}
-    </AppContext.Provider>
+    </DentisState.Provider>
   );
 };
 
+// Función personalizada para acceder al contexto global
+const useDentistStates = () => useContext(DentisState);
+
+export { GlobalContextProvider, useDentistStates };

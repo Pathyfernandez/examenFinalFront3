@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import Form from '../Components/Form';
-import { AppContext } from '../Context/GlobalContext';
+import { DentisState } from '../Context/GlobalContext';
 
 const Contact = () => {
-  const { state } = useContext(AppContext);
+  const { state } = useContext(DentisState);
 
   return (
     <div className={state.theme === 'dark' ? 'dark-theme' : 'light-theme'}>

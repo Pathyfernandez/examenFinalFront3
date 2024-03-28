@@ -5,16 +5,20 @@ import Detail from './Pages/Detail';
 import Contact from './Pages/Contact';
 import Favs from './Pages/Favs';
 
+
+
 function App() {
   return (
-    <Routes>
-        <Route path="/" exact component={Home} />
-        <Route path="/detail" component={Detail} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/favs" component={Favs} />
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="/detail.id" element={<Detail/>} />
+        <Route path="/contact" element={<Contact/>} />
+        <Route path="/favs" element={<Favs/>} />
+      </Routes>
+  )
+        
       
-    </Routes>
-  );
+  
 }
 
 export default App;
