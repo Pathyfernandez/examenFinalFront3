@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { AppContext } from '../Context/RecipeContext';
+import { AppContext } from '../Context/GlobalContext';
 
 const Detail = () => {
   const { state } = useContext(AppContext);
@@ -8,7 +8,6 @@ const Detail = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    // Hacer un fetch a un user en especifico utilizando el ID
     const fetchDentist = async () => {
       try {
         const response = await fetch(`https://jsonplaceholder.typicode.com/users/:id`);

@@ -1,29 +1,23 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, } from 'react-router-dom';
-import { routes } from './Utils/Routes';
-
-
-
+import { Route, Routes } from 'react-router-dom';
+import Home from './Pages/Home';
+import Detail from './Pages/Detail';
+import Contact from './Pages/Contact';
+import Favs from './Pages/Favs';
 
 function App() {
   return (
-    <Router>
+    <Routes>
+        <Route path="/" exact component={Home} />
+        <Route path="/detail" component={Detail} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/favs" component={Favs} />
       
-          <div>
-            
-            
-              <Route path={routes.home} exact component={Home} />
-              <Route path={routes.detail} component={DentistDetail} />
-              <Route path={routes.contact} component={Contact} />
-              <Route path={routes.favs} component={Favorites} />
-            
-          
-          </div>
-      
-    </Router>
+    </Routes>
   );
 }
 
 export default App;
+
 
 

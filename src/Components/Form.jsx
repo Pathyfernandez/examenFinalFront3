@@ -17,9 +17,7 @@ setFormData(prevState => ({
 
 const handleSubmit = (e) => {
 e.preventDefault();
-// Aquí puedes agregar la lógica para enviar los datos del formulario
 console.log("Formulario enviado:", formData);
-// Aquí puedes agregar la lógica para limpiar el formulario después de enviarlo
 setFormData({
     name: "",
     email: "",
