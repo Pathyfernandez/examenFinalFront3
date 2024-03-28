@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { DentisState } from '../Context/GlobalContext';
+import { useDentistStates } from '../Context/Context';
 
 const Detail = () => {
-  const { state } = useContext(DentisState);
+  const { state } = useContext(useDentistStates);
   const { id } = useParams();
   const [user, setUser] = useState(null);
 

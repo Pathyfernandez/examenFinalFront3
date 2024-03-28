@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { AppContext } from '../Contex/globalContext';
+import { DentisState } from '../Context/Context';
 
 const Footer = () => {
-const { state } = useContext(AppContext);
+const { state } = useContext(DentisState);
 
 return (
 <footer className={state.theme === 'dark' ? 'dark-theme' : 'light-theme'}>

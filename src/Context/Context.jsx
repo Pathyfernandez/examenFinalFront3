@@ -1,17 +1,14 @@
 import React, { createContext, useContext, useEffect, useReducer } from "react";
 import axios from "axios";
 
-// Definición del contexto
 const DentisState = createContext();
 
-// Estado inicial
 const initialState = {
   cart: [],
   list: [],
   theme: "light", // Por defecto, el tema es "light"
 };
 
-// Reducer para gestionar las acciones
 const reducer = (state, action) => {
   switch (action.type) {
     case 'GET_LIST':
@@ -29,11 +26,9 @@ const reducer = (state, action) => {
   }
 };
 
-// Componente de contexto global
-const GlobalContextProvider = ({ children }) => {
+const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // Carga de datos iniciales
   useEffect(() => {
     axios('https://jsonplaceholder.typicode.com/users')
       .then(res => {
@@ -48,7 +43,7 @@ const GlobalContextProvider = ({ children }) => {
   );
 };
 
-// Función personalizada para acceder al contexto global
 const useDentistStates = () => useContext(DentisState);
 
-export { GlobalContextProvider, useDentistStates };
+export { ContextProvider, useDentistStates, DentisState };
+

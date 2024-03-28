@@ -1,14 +1,8 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { AppContext } from '../Contex/globalContext';
-import { routes } from '../Utils/Routes';
+import { DentisState } from '../Context/Context';
 
 const Navbar = () => {
-const { state, dispatch } = useContext(AppContext);
-
-const changeTheme = () => {
-dispatch({ type: 'TOGGLE_THEME' });
-};
+const { state } = useContext(DentisState);
 
 return (
 <nav className={state.theme === 'dark' ? 'dark-theme' : 'light-theme'}>
