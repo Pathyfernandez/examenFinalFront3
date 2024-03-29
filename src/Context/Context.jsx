@@ -1,49 +1,25 @@
-import React, { createContext, useContext, useEffect, useReducer } from "react";
-import axios from "axios";
+import { createContext, useContext, useReducer, useState } from "react";
+import { reducer } from "../Reducers/reducer";
 
-const DentisState = createContext();
+const ContextStates = createContext()
 
 const initialState = {
-  cart: [],
-  list: [],
-  theme: "light", // Por defecto, el tema es "light"
-};
+    doctorList: [],
+    favs: []
+}
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'GET_LIST':
-      return {
-        ...state,
-        list: action.payload,
-      };
-    case 'TOGGLE_THEME':
-      return {
-        ...state,
-        theme: state.theme === "light" ? "dark" : "light", // Cambia entre "light" y "dark"
-      };
-    default:
-      return state;
-  }
-};
+const Context = ({children}) =>{
+    // const [favs, setFavs] = useState([])
+    const [state, dispatch] = useReducer(reducer, initialState)
+    console.log(state)
 
-const ContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+    return (
+        <ContextStates.Provider value={{state, dispatch}}>
+            {children}
+        </ContextStates.Provider>
+    )
+}
 
-  useEffect(() => {
-    axios('https://jsonplaceholder.typicode.com/users')
-      .then(res => {
-        dispatch({ type: 'GET_LIST', payload: res.data });
-      });
-  }, []);
+export default Context
 
-  return (
-    <DentisState.Provider value={{ state, dispatch }}>
-      {children}
-    </DentisState.Provider>
-  );
-};
-
-const useDentistStates = () => useContext(DentisState);
-
-export { ContextProvider, useDentistStates, DentisState };
-
+export const useContextStates = () => useContext(ContextStates)

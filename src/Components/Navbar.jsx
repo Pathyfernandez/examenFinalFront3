@@ -1,25 +1,23 @@
-import React, { useContext } from 'react';
-import { DentisState } from '../Context/Context';
+import React from 'react'
+import { routes } from './utils/Routes'
+import { Link } from 'react-router-dom'
+
+//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Navbar = () => {
-const { state } = useContext(DentisState);
 
 return (
-<nav className={state.theme === 'dark' ? 'dark-theme' : 'light-theme'}>
-    <ul>
-    <li>
-        <Link to={routes.home}>Home</Link>
-    </li>
-    <li>
-        <Link to={routes.contact}>Contacto</Link>
-    </li>
-    <li>
-        <Link to={routes.favs}>Favoritos</Link>
-    </li>
-    </ul>
-    <button onClick={changeTheme}>Cambiar Tema</button>
-</nav>
-);
-};
+<nav>
+    {/* Aqui deberan agregar los liks correspondientes a las rutas definidas */}
+    {/* Deberan implementar ademas la logica para cambiar de Theme con el button */}
+    <Link to={routes.home} > <h4>Home</h4> </Link>
+    <Link to={routes.contact} > <h4>Contact</h4> </Link>
+    <Link to={routes.favs} > <h4>Favs</h4> </Link>
 
-export default Navbar;
+    
+    <button>Change theme</button>
+</nav>
+)
+}
+
+export default Navbar

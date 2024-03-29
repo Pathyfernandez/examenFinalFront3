@@ -1,15 +1,13 @@
-import React, { useContext } from 'react';
-import { DentisState } from '../Context/Context';
+import React from 'react'
+import dh_logo from '../../public/images/DH.png'
 
 const Footer = () => {
-const { state } = useContext(DentisState);
-
 return (
-<footer className={state.theme === 'dark' ? 'dark-theme' : 'light-theme'}>
+<footer>
     <p>Powered by</p>
-    <img src="images/DH.png" alt="DH-logo" />
+    <img src={dh_logo} alt='DH-logo' />
 </footer>
-);
-};
+)
+}
 
-export default Footer;
+export default Footer
