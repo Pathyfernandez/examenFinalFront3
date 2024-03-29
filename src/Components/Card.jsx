@@ -19,7 +19,7 @@ return (
     </div>
     <Link to={'/detail/'+doctor.id} ><h3>{doctor.name}</h3></Link>
     <h4> {doctor.username} </h4>
-    {/* <button onClick={()=> setFavs([...favs, doctor])} >estrella</button> */}
+    
     {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
     <button onClick={()=> dispatch({type: 'addFav', payload: doctor})} className="favButton">Add fav</button>
 </div>
