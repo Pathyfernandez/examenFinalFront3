@@ -17,13 +17,13 @@ const Detail = () => {
 
   return (
     <div className={state.theme}>
-      <h1>Detail Dentist id </h1>
+      <h1>Información del Dentista</h1>
       <table>
         <tbody>
           <tr>
-            <td>Name</td>
+            <td>Nombre</td>
             <td>Email</td>
-            <td>Phone</td>
+            <td>Telefono</td>
             <td>Website</td>
           </tr>
           <tr>

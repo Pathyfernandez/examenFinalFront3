@@ -1,25 +1,46 @@
-import { createContext, useContext, useReducer, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import { reducer } from "../Reducers/reducer";
+import axios from "axios";
 
-const ContextStates = createContext()
+const ContextStates = createContext();
 
 const initialState = {
-    doctorList: [],
-    favs: []
-}
+  list: [],
+  detail: {},
+  favs: JSON.parse(localStorage.getItem("favs")) || [],
+  theme: "light",
+};
 
-const Context = ({children}) =>{
-    // const [favs, setFavs] = useState([])
-    const [state, dispatch] = useReducer(reducer, initialState)
-    console.log(state)
+const Context = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  console.log(state);
+  const url = "https://jsonplaceholder.typicode.com/users";
 
-    return (
-        <ContextStates.Provider value={{state, dispatch}}>
-            {children}
-        </ContextStates.Provider>
-    )
-}
+  useEffect(() => {
+    axios(url).then((res) => dispatch({ type: "getList", payload: res.data }));
+  }, []);
 
-export default Context
+  useEffect(() => {
+    localStorage.setItem("favs", JSON.stringify(state.favs));
+  }, [state.favs]);
 
-export const useContextStates = () => useContext(ContextStates)
+  const toggleTheme = () => {
+    dispatch({ type: "toggleTheme" });
+  };
+
+  return (
+    <ContextStates.Provider value={{ state, dispatch, toggleTheme }}>
+      {children}
+    </ContextStates.Provider>
+  );
+};
+
+export default Context;
+
+export const useContextStates = () => useContext(ContextStates);

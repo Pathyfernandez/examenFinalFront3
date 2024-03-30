@@ -5,7 +5,7 @@ import Home from "./Routes/Home";
 import Contact from "./Routes/Contact";
 import Favs from "./Routes/Favs";
 import Detail from "./Routes/Detail";
-import { routes } from "./Components/utils/Routes";
+import { routes } from "./Components/utils/routes";
 
 function App() {
   return (

@@ -6,8 +6,8 @@ const Contact = () => {
   const { state } = useContextStates();
   return (
     <div className={state.theme}>
-      <h2>Want to know more?</h2>
-      <p>Send us your questions and we will contact you</p>
+      <h2>¿Quieres saber mas?</h2>
+      <p>¡Envia tus preguntas y te contactaremos!</p>
       <Form />
     </div>
   );
