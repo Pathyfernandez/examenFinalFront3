@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
 
 return (
-<nav>
+<nav className='h-screen flex justify-center items-center'>
     {/* Aqui deberan agregar los liks correspondientes a las rutas definidas */}
     {/* Deberan implementar ademas la logica para cambiar de Theme con el button */}
     <Link to={routes.home} > <h4>Home</h4> </Link>
@@ -15,7 +15,7 @@ return (
     <Link to={routes.favs} > <h4>Favs</h4> </Link>
 
     
-    <button>Change theme</button>
+    <button className='bg-slade-200 px-4 py-2 rounded hober:bg-slate-300'>Change theme</button>
 </nav>
 )
 }
