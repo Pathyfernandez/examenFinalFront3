@@ -1,71 +1,68 @@
 import React, { useState } from "react";
 
 const Form = () => {
-const [formData, setFormData] = useState({
-name: "",
-email: "",
-message: ""
-});
-
-const handleChange = (e) => {
-const { name, value } = e.target;
-setFormData(prevState => ({
-    ...prevState,
-    [name]: value
-}));
-};
-
-const handleSubmit = (e) => {
-e.preventDefault();
-console.log("Formulario enviado:", formData);
-setFormData({
-    name: "",
+  const [formData, setFormData] = useState({
+    fullName: "",
     email: "",
-    message: ""
-});
-};
+    error: "",
+    successMessage: "",
+  });
 
-return (
-<div>
-    <h2>Formulario de contacto</h2>
-    <form onSubmit={handleSubmit}>
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (formData.fullName.length <= 5 || !formData.email.includes("@")) {
+      setFormData({
+        ...formData,
+        error: "Por favor verifique su información nuevamente",
+        successMessage: "",
+      });
+      return;
+    }
+
+    setFormData({
+      fullName: "",
+      email: "",
+      error: "",
+      successMessage: `Gracias ${formData.fullName}, te contactaremos cuanto antes vía email`,
+    });
+  };
+
+  return (
     <div>
-        <label htmlFor="name">Nombre:</label>
+      <form onSubmit={handleSubmit}>
         <input
-        type="text"
-        id="name"
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
-        required
+          type="text"
+          id="fullName"
+          name="fullName"
+          value={formData.fullName}
+          onChange={handleChange}
+          placeholder="Nombre Completo"
         />
-    </div>
-    <div>
-        <label htmlFor="email">Email:</label>
         <input
-        type="email"
-        id="email"
-        name="email"
-        value={formData.email}
-        onChange={handleChange}
-        required
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Email"
         />
+
+        {formData.error && <p>{formData.error}</p>}
+        {formData.successMessage && <p>{formData.successMessage}</p>}
+
+        <button type="submit">Enviar</button>
+      </form>
     </div>
-    <div>
-        <label htmlFor="message">Mensaje:</label>
-        <textarea
-        id="message"
-        name="message"
-        value={formData.message}
-        onChange={handleChange}
-        required
-        />
-    </div>
-    <button type="submit">Submit</button>
-    </form>
-</div>
-);
+  );
 };
 
 export default Form;
-

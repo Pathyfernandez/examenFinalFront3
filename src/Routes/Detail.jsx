@@ -1,48 +1,41 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { useContextStates } from '../Context/Context'
-
-
-
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
+import axios from "axios";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useContextStates } from "../Context/Context";
 
 const Detail = () => {
-const [doctor, setDoctor] = useState({})
-const params = useParams()
-const url = `https://jsonplaceholder.typicode.com/users/${params.id}`
+  const { state, dispatch } = useContextStates();
+  const { detail } = state;
+  const params = useParams();
+  const url = `https://jsonplaceholder.typicode.com/users/${params.id}`;
 
+  useEffect(() => {
+    axios(url).then((res) =>
+      dispatch({ type: "getDetail", payload: res.data })
+    );
+  }, []);
 
+  return (
+    <div className={state.theme}>
+      <h1>Detail Dentist id </h1>
+      <table>
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Phone</td>
+            <td>Website</td>
+          </tr>
+          <tr>
+            <td>{detail.name}</td>
+            <td>{detail.email}</td>
+            <td>{detail.phone}</td>
+            <td>{detail.website}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
-useEffect(()=>{
-  axios(url)
-  .then(res => setDoctor(res.data))
-}, [])
-  
-
-return (
-  <>
-    <h1>Detail Dentist id </h1>
-    <table>
-      <tbody>
-      <tr>
-        <td>Name</td>
-        <td>Email</td>
-        <td>Phone</td>
-        <td>Website</td>
-      </tr>
-      <tr>
-        <td>{doctor.name}</td>
-        <td>{doctor.email}</td>
-        <td>{doctor.phone}</td>
-        <td>{doctor.website}</td>
-      </tr>
-
-      </tbody>
-      
-    </table>
-  </>
-)
-}
-
-export default Detail
+export default Detail;
