@@ -1,8 +1,69 @@
-# React + Vite
+<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+<a name="readme-top"></a>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<!-- Examen Final Front III -->
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/Pathyfernandez/examenFinalFront3/edit/main/README.md">
+    <img src="public/images/DH.png" alt="Logo" width="80" height="80">
+  </a>
+
+  <h3 align="center">DH ODONTO</h3>
+
+</div>
+
+
+
+<!-- GETTING STARTED -->
+## Empezando
+
+Para poner en funcionamiento una copia local, siga estos sencillos pasos
+
+### Requisitos previos
+.
+* npm
+  ```sh
+  npm create vite@latest 
+  ```
+
+### Instalación
+
+   ```
+1. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Arrancar el proyecto
+   ```js
+   npm run dev';
+   ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+
+<!-- COLABORADORES  -->
+## COLABORADORES
+
+Kenya Tapia - [https://github.com/ktmedina) - 
+Pathy Fernandez - [https://github.com/Pathyfernandez) - 
+
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+
+
+
+
+
+
+
+
+
